@@ -1,18 +1,54 @@
 @import "~bootstrap/scss/bootstrap";
+@import "variables.scss";
+
+#app {
+    height: 100vh;
+}
 
 .navbar {
-    background-color: rgb(161, 0, 0);
+    background-color: black;
     height: 120px;
+    padding: 0 40px;
     display: flex;
-    justify-content: center;
+    justify-content: space-between;
+    align-items: center;
+
+    img {
+        height: 60%;
+    }
 
     .search-bar {
-        width: 50%;
+        width: 25%;
+        margin-bottom: 0!important;
+        .form-control:focus {
+            border-color: black;
+            outline: 0;
+            box-shadow: none;
+        };
+        .btn {
+            background-color: $boolflix-red;
+            color: white;
+            border-color: black
+        }
     }
 }
 
-.movies {
-    ul {
-        list-style-type: none;
+main {
+    background-color: rgb(49, 49, 49);
+    min-height: calc(100% - 120px);
+
+    .title {
+        color: $boolflix-red;
+    }
+
+    .row {
+        .product-card {
+            background-color: white;
+            height: 400px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 95%;
+        }
     }
 }

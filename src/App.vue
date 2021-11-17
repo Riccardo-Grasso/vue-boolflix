@@ -1,6 +1,7 @@
 <template>
   <div id="app">
     <nav class="navbar">
+      <img src="@/assets/logo.png" alt="logo" />
       <div class="input-group search-bar mb-3">
         <input
           type="text"
@@ -10,7 +11,7 @@
           @keydown.enter="searchAll"
         />
         <button
-          class="btn btn-warning"
+          class="btn"
           type="button "
           id="button-addon2"
           @click="searchAll"
@@ -21,28 +22,31 @@
     </nav>
     <main>
       <div class="container">
-        <div class="movies">
-          <h2>FILM</h2>
-          <ul v-if="!search == ''">
-            <li v-for="movie in movies" :key="movie.id" class="py-3">
-              Titolo: {{ movie.title }} <br />
-              Titolo Originale: {{ movie.original_title }} <br />
-              Lingua: {{ movie.original_language }}<br />
-              Voto: {{ movie.vote_average }}
-              <i class="flag flag-us"></i>
-            </li>
-          </ul>
+        <div class="movies py-5">
+          <h1 class="title" v-if="empty === false">FILM</h1>
+          <div v-if="!search == ''" class="row row-cols-3 g-3">
+            <div v-for="movie in movies" :key="movie.id" class="py-3 col">
+              <div class="product-card">
+                Titolo: {{ movie.title }} <br />
+                Titolo Originale: {{ movie.original_title }} <br />
+                Lingua: {{ movie.original_language }}<br />
+                Voto: {{ movie.vote_average }}
+              </div>
+            </div>
+          </div>
         </div>
-        <div class="tvShows">
-          <h2>SERIE TV</h2>
-          <ul v-if="!search == ''">
-            <li v-for="show in tvShows" :key="show.id" class="py-3">
-              Titolo: {{ show.name }} <br />
-              Titolo Originale: {{ show.original_name }} <br />
-              Lingua: {{ show.original_language }}<br />
-              Voto: {{ show.vote_average }}
-            </li>
-          </ul>
+        <div class="tvShows py-5">
+          <h1 class="title" v-if="empty === false">SERIE TV</h1>
+          <div v-if="!movies == []" class="row row-cols-3 g-3">
+            <div v-for="show in tvShows" :key="show.id" class="py-3 col">
+              <div class="product-card">
+                Titolo: {{ show.name }} <br />
+                Titolo Originale: {{ show.original_name }} <br />
+                Lingua: {{ show.original_language }}<br />
+                Voto: {{ show.vote_average }}
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </main>
@@ -61,6 +65,7 @@ export default {
       movies: [],
       tvShows: [],
       search: "",
+      empty: true,
     };
   },
   methods: {
@@ -73,6 +78,7 @@ export default {
           },
         })
         .then((resp) => {
+          this.empty = false;
           if (media == "movie") {
             this.movies = resp.data.results;
           } else {
