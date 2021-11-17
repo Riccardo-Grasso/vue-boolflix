@@ -30,7 +30,10 @@
                 Titolo: {{ movie.title }} <br />
                 Titolo Originale: {{ movie.original_title }} <br />
                 Lingua: {{ movie.original_language }}<br />
-                Voto: {{ movie.vote_average }}
+                Voto: {{ movie.vote_average }}<br />
+                <div>
+                  <country-flag :country="movie.original_language" />
+                </div>
               </div>
             </div>
           </div>
@@ -55,9 +58,10 @@
 
 <script>
 import axios from "axios";
+import CountryFlag from "vue-country-flag";
 export default {
   name: "App",
-  components: {},
+  components: { CountryFlag },
   data() {
     return {
       apiKey: "4da53067624ff511e71f704a970e4a73",
@@ -66,6 +70,9 @@ export default {
       tvShows: [],
       search: "",
       empty: true,
+      flags: {
+        en: "eng.png",
+      },
     };
   },
   methods: {

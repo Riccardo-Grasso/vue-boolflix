@@ -49,6 +49,10 @@ main {
             justify-content: center;
             align-items: center;
             width: 95%;
+
+            country-flag {
+                display: block!important;
+            }
         }
     }
 }
