@@ -29,6 +29,7 @@
               Titolo Originale: {{ movie.original_title }} <br />
               Lingua: {{ movie.original_language }}<br />
               Voto: {{ movie.vote_average }}
+              <i class="flag flag-us"></i>
             </li>
           </ul>
         </div>
@@ -37,6 +38,9 @@
           <ul v-if="!search == ''">
             <li v-for="show in tvShows" :key="show.id" class="py-3">
               Titolo: {{ show.name }} <br />
+              Titolo Originale: {{ show.original_name }} <br />
+              Lingua: {{ show.original_language }}<br />
+              Voto: {{ show.vote_average }}
             </li>
           </ul>
         </div>
