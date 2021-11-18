@@ -29,9 +29,6 @@ export default {
         es: require("@/assets/es.png"),
         default: require("@/assets/earth.png"),
       },
-      /*     imgDefault: {
-        default: require("@/assets/logo.png"),
-      }, */
     };
   },
   props: {
