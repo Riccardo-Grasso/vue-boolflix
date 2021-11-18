@@ -27,14 +27,15 @@
           <div v-if="!search == ''" class="row row-cols-3 g-3">
             <div v-for="movie in movies" :key="movie.id" class="py-3 col">
               <div class="product-card">
-                Titolo: {{ movie.title }} <br />
-                Titolo Originale: {{ movie.original_title }} <br />
-                Lingua: {{ movie.original_language }}<br />
+                <strong>Titolo:</strong> {{ movie.title }} <br />
+                <strong>Titolo Originale:</strong> {{ movie.original_title }}
+                <br />
+                <strong>Lingua:</strong>
                 <img
                   :src="countryFlag(movie.original_language)"
                   alt="flag"
                 /><br />
-                Voto: {{ movie.vote_average }}<br />
+                <strong>Voto:</strong> {{ movie.vote_average }}<br />
               </div>
             </div>
           </div>
@@ -44,14 +45,15 @@
           <div v-if="!movies == []" class="row row-cols-3 g-3">
             <div v-for="show in tvShows" :key="show.id" class="py-3 col">
               <div class="product-card">
-                Titolo: {{ show.name }} <br />
-                Titolo Originale: {{ show.original_name }} <br />
-                Lingua: {{ show.original_language }}<br />
-                Voto: {{ show.vote_average }}
+                <strong>Titolo:</strong> {{ show.name }} <br />
+                <strong>Titolo Originale:</strong> {{ show.original_name }}
+                <br />
+                <strong>Lingua:</strong>
                 <img
-                  :src="countryFlag(movie.original_language)"
+                  :src="countryFlag(show.original_language)"
                   alt="flag"
                 /><br />
+                <strong>Voto:</strong> {{ show.vote_average }}
               </div>
             </div>
           </div>
@@ -63,7 +65,6 @@
 
 <script>
 import axios from "axios";
-
 export default {
   name: "App",
   components: {},
@@ -80,8 +81,6 @@ export default {
         it: "it.png",
         fr: "fr.png",
         es: "es.png",
-        hr: "hr.png",
-        earth: "earth.png",
       },
     };
   },
@@ -110,7 +109,7 @@ export default {
     countryFlag(flagToSearch) {
       console.log(flagToSearch);
       if (!this.flags[flagToSearch]) {
-        return require("@/assets/" + this.flags.earth);
+        return require("@/assets/earth.png");
       }
       return require("@/assets/" + this.flags[flagToSearch]);
     },
