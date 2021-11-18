@@ -46,13 +46,10 @@ main {
             background-color: white;
             height: 400px;
             display: flex;
+            flex-direction: column;
             justify-content: center;
             align-items: center;
             width: 95%;
-
-            country-flag {
-                display: block!important;
-            }
         }
     }
 }
