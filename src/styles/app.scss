@@ -40,21 +40,16 @@ main {
     .title {
         color: $boolflix-red;
     }
-
     .row {
-        .product-card {
-            background-color: white;
-            height: 400px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            width: 95%;
-            flex-direction: column;
-
-            img {
-                width: 60px;
-                aspect-ratio: 2/1;
-            }
-        }
+        .col{
+        background-color: white;
+        height: 513px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 342px;
+        padding: 0;
     }
+    }
+    
 }

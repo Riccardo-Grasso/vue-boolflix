@@ -25,37 +25,23 @@
         <div class="movies py-5">
           <h1 class="title" v-if="empty === false">FILM</h1>
           <div v-if="!search == ''" class="row row-cols-3 g-3">
-            <div v-for="movie in movies" :key="movie.id" class="py-3 col">
-              <div class="product-card">
-                <strong>Titolo:</strong> {{ movie.title }} <br />
-                <strong>Titolo Originale:</strong> {{ movie.original_title }}
-                <br />
-                <strong>Lingua:</strong>
-                <img
-                  :src="countryFlag(movie.original_language)"
-                  alt="flag"
-                /><br />
-                <strong>Voto:</strong> {{ movie.vote_average }}<br />
-              </div>
-            </div>
+            <MovieCard
+              v-for="movie in movies"
+              :key="movie.id"
+              class="col"
+              :data="movie"
+            ></MovieCard>
           </div>
         </div>
         <div class="tvShows py-5">
           <h1 class="title" v-if="empty === false">SERIE TV</h1>
           <div v-if="!movies == []" class="row row-cols-3 g-3">
-            <div v-for="show in tvShows" :key="show.id" class="py-3 col">
-              <div class="product-card">
-                <strong>Titolo:</strong> {{ show.name }} <br />
-                <strong>Titolo Originale:</strong> {{ show.original_name }}
-                <br />
-                <strong>Lingua:</strong>
-                <img
-                  :src="countryFlag(show.original_language)"
-                  alt="flag"
-                /><br />
-                <strong>Voto:</strong> {{ show.vote_average }}
-              </div>
-            </div>
+            <ShowCard
+              v-for="show in tvShows"
+              :key="show.id"
+              class="col"
+              :data="show"
+            ></ShowCard>
           </div>
         </div>
       </div>
@@ -65,9 +51,12 @@
 
 <script>
 import axios from "axios";
+import MovieCard from "./components/MovieCard.vue";
+import ShowCard from "./components/ShowCard.vue";
+
 export default {
   name: "App",
-  components: {},
+  components: { MovieCard, ShowCard },
   data() {
     return {
       apiKey: "4da53067624ff511e71f704a970e4a73",
@@ -76,12 +65,6 @@ export default {
       tvShows: [],
       search: "",
       empty: true,
-      flags: {
-        en: "en.png",
-        it: "it.png",
-        fr: "fr.png",
-        es: "es.png",
-      },
     };
   },
   methods: {
@@ -106,13 +89,13 @@ export default {
       this.searchMovie("movie");
       this.searchMovie("tv");
     },
-    countryFlag(flagToSearch) {
+    /* countryFlag(flagToSearch) {
       console.log(flagToSearch);
       if (!this.flags[flagToSearch]) {
         return require("@/assets/earth.png");
       }
       return require("@/assets/" + this.flags[flagToSearch]);
-    },
+    }, */
   },
 };
 </script>
