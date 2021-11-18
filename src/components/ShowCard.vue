@@ -42,7 +42,6 @@ export default {
       const imgUrl = "https://image.tmdb.org/t/p/";
       const imgSize = "w342";
       const imgUrlCompleto = imgUrl + imgSize + this.data.poster_path;
-      console.log(imgUrlCompleto);
       if (!this.data.poster_path) {
         return require("@/assets/logo.png");
       }
@@ -51,7 +50,8 @@ export default {
 
     voteRound() {
       const myVote = this.data.vote_average;
-      return Math.round(myVote / 2);
+      const finalVote = Math.round(myVote / 2);
+      return finalVote;
     },
   },
 };

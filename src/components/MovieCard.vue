@@ -48,7 +48,8 @@ export default {
 
     voteRound() {
       const myVote = this.data.vote_average;
-      return Math.round(myVote / 2);
+      const finalVote = Math.round(myVote / 2);
+      return finalVote;
     },
   },
 };
