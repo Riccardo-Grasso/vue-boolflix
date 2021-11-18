@@ -46,10 +46,15 @@ main {
             background-color: white;
             height: 400px;
             display: flex;
-            flex-direction: column;
             justify-content: center;
             align-items: center;
             width: 95%;
+            flex-direction: column;
+
+            img {
+                width: 60px;
+                aspect-ratio: 2/1;
+            }
         }
     }
 }

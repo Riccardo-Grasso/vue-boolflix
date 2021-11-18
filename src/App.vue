@@ -48,6 +48,10 @@
                 Titolo Originale: {{ show.original_name }} <br />
                 Lingua: {{ show.original_language }}<br />
                 Voto: {{ show.vote_average }}
+                <img
+                  :src="countryFlag(movie.original_language)"
+                  alt="flag"
+                /><br />
               </div>
             </div>
           </div>
@@ -74,6 +78,10 @@ export default {
       flags: {
         en: "en.png",
         it: "it.png",
+        fr: "fr.png",
+        es: "es.png",
+        hr: "hr.png",
+        earth: "earth.png",
       },
     };
   },
@@ -100,7 +108,10 @@ export default {
       this.searchMovie("tv");
     },
     countryFlag(flagToSearch) {
-      console.log("flagToSearch");
+      console.log(flagToSearch);
+      if (!this.flags[flagToSearch]) {
+        return require("@/assets/" + this.flags.earth);
+      }
       return require("@/assets/" + this.flags[flagToSearch]);
     },
   },
