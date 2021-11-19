@@ -21,7 +21,15 @@
           />
         </div>
         <div class="info-content">
-          <strong class="text-big">Voto: </strong>{{ voteRound }}
+          <strong class="text-big">Voto: </strong>
+          <div class="stars-container ms-1">
+            <i
+              v-for="i in 5"
+              :key="'vote_star_' + i"
+              class="fa"
+              :class="i <= voteRound ? 'fa-star' : 'fa-star-o'"
+            ></i>
+          </div>
         </div>
       </div>
       <div class="poster">
@@ -61,27 +69,7 @@ export default {
 
     voteRound() {
       const myVote = this.data.vote_average;
-      let finalVote = Math.round(myVote / 2);
-
-      switch (finalVote) {
-        case 1:
-          finalVote = "\u2B50";
-          break;
-        case 2:
-          finalVote = "\u2B50" + "\u2B50";
-          break;
-        case 3:
-          finalVote = "\u2B50" + "\u2B50" + "\u2B50";
-          break;
-        case 4:
-          finalVote = "\u2B50" + "\u2B50" + "\u2B50" + "\u2B50";
-          break;
-        case 5:
-          finalVote = "\u2B50" + "\u2B50" + "\u2B50" + "\u2B50" + "\u2B50";
-          break;
-        default:
-          finalVote = "ND";
-      }
+      const finalVote = Math.round(myVote / 2);
       return finalVote;
     },
   },

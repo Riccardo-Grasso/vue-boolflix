@@ -1,5 +1,5 @@
 @import "variables.scss";
-
+@import "~font-awesome/css/font-awesome.css";
 .col{
     display: flex;
     justify-content: center;
@@ -31,6 +31,13 @@
             .flag-img {
             width: 35px;
             aspect-ratio: 2/1;
+            }
+
+            .stars-container {
+                display: inline-block;
+                i {
+                    color: rgb(255, 217, 0);
+                }
             }
 
             &:hover {
