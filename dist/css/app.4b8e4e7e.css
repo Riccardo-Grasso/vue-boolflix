@@ -1,4 +1,4 @@
-.col{display:flex;justify-content:center;align-items:center;padding:0}.col .product-card{position:relative!important;background-color:#000;width:342px;height:513px}.col .product-card .info{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);color:red}.col .product-card .info .flag-img{width:60px;aspect-ratio:2/1}.col .product-card .poster,.col .product-card .poster .poster-img{width:100%;height:100%}
+.col{display:flex;justify-content:center;align-items:center;padding:0}.col .product-card{position:relative!important;background-color:#000;width:342px;height:513px}.col .product-card .info{position:absolute;background-color:rgba(0,0,0,.9);width:100%;height:100%;top:0;left:0;color:#fff;display:flex;flex-direction:column;justify-content:center;opacity:0}.col .product-card .info .text-big{font-size:18px}.col .product-card .info .flag-img{width:35px;aspect-ratio:2/1}.col .product-card .info:hover{opacity:1}.col .product-card .poster,.col .product-card .poster .poster-img{width:100%;height:100%}
 /*!
  * Bootstrap v5.1.3 (https://getbootstrap.com/)
  * Copyright 2011-2021 The Bootstrap Authors

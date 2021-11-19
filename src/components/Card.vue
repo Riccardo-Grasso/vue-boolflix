@@ -1,16 +1,28 @@
 <template>
-  <div class="col">
+  <div class="col mt-5">
     <div class="product-card">
-      <div class="info">
-        <strong>Titolo: </strong>{{ data.title }}<br />
-        <strong>Titolo Originale: </strong>{{ data.original_title }} <br />
-        <strong>Lingua: </strong>
-        <img
-          :src="flags[data.original_language] || flags.default"
-          alt="flag"
-          class="flag-img"
-        /><br />
-        <strong>Voto: </strong>{{ voteRound }}<br />
+      <div class="info p-5">
+        <div class="info-content mb-2">
+          <strong class="text-big">Titolo: </strong
+          >{{ data.title || data.name }}
+        </div>
+
+        <div class="info-content mb-2">
+          <strong class="text-big">Titolo Originale: </strong
+          >{{ data.original_title || data.original_name }}
+        </div>
+
+        <div class="info-content mb-2">
+          <strong class="text-big">Lingua: </strong>
+          <img
+            :src="flags[data.original_language] || flags.default"
+            alt="flag"
+            class="flag-img ms-2"
+          />
+        </div>
+        <div class="info-content">
+          <strong class="text-big">Voto: </strong>{{ voteRound }}
+        </div>
       </div>
       <div class="poster">
         <img :src="imgPath" alt="poster" class="poster-img" />
@@ -21,7 +33,7 @@
 
 <script>
 export default {
-  name: "MovieCard",
+  name: "Card",
   data() {
     return {
       flags: {
@@ -41,7 +53,6 @@ export default {
       const imgUrl = "https://image.tmdb.org/t/p/";
       const imgSize = "w342";
       const imgUrlCompleto = imgUrl + imgSize + this.data.poster_path;
-      console.log(imgUrlCompleto);
       if (!this.data.poster_path) {
         return require("@/assets/logo.png");
       }

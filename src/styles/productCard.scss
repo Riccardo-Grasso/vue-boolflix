@@ -1,3 +1,5 @@
+@import "variables.scss";
+
 .col{
     display: flex;
     justify-content: center;
@@ -12,14 +14,27 @@
 
         .info {
             position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            color: rgb(255, 0, 0);
+            background-color: rgba($color: #000000, $alpha: 0.9);
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            color: white;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            opacity: 0;
 
+            .text-big {
+                font-size: $info-text-big;
+            }
             .flag-img {
-            width: 60px;
+            width: 35px;
             aspect-ratio: 2/1;
+            }
+
+            &:hover {
+                opacity: 1;
             }
         }
         .poster {

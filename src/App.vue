@@ -25,21 +25,13 @@
         <div class="movies py-5">
           <h1 class="title" v-if="empty === false">FILM</h1>
           <div v-if="!search == ''" class="row row-cols-3 g-3">
-            <MovieCard
-              v-for="movie in movies"
-              :key="movie.id"
-              :data="movie"
-            ></MovieCard>
+            <Card v-for="movie in movies" :key="movie.id" :data="movie"></Card>
           </div>
         </div>
         <div class="tvShows py-5">
           <h1 class="title" v-if="empty === false">SERIE TV</h1>
           <div v-if="!movies == []" class="row row-cols-3 g-3">
-            <ShowCard
-              v-for="show in tvShows"
-              :key="show.id"
-              :data="show"
-            ></ShowCard>
+            <Card v-for="show in tvShows" :key="show.id" :data="show"></Card>
           </div>
         </div>
       </div>
@@ -49,12 +41,11 @@
 
 <script>
 import axios from "axios";
-import MovieCard from "./components/MovieCard.vue";
-import ShowCard from "./components/ShowCard.vue";
+import Card from "./components/Card.vue";
 
 export default {
   name: "App",
-  components: { MovieCard, ShowCard },
+  components: { Card },
   data() {
     return {
       apiKey: "4da53067624ff511e71f704a970e4a73",
@@ -72,6 +63,7 @@ export default {
           params: {
             api_key: this.apiKey,
             query: this.search,
+            language: "it",
           },
         })
         .then((resp) => {
@@ -87,13 +79,6 @@ export default {
       this.searchMovie("movie");
       this.searchMovie("tv");
     },
-    /* countryFlag(flagToSearch) {
-      console.log(flagToSearch);
-      if (!this.flags[flagToSearch]) {
-        return require("@/assets/earth.png");
-      }
-      return require("@/assets/" + this.flags[flagToSearch]);
-    }, */
   },
 };
 </script>
