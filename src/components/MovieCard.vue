@@ -48,7 +48,27 @@ export default {
 
     voteRound() {
       const myVote = this.data.vote_average;
-      const finalVote = Math.round(myVote / 2);
+      let finalVote = Math.round(myVote / 2);
+
+      switch (finalVote) {
+        case 1:
+          finalVote = "\u2B50";
+          break;
+        case 2:
+          finalVote = "\u2B50" + "\u2B50";
+          break;
+        case 3:
+          finalVote = "\u2B50" + "\u2B50" + "\u2B50";
+          break;
+        case 4:
+          finalVote = "\u2B50" + "\u2B50" + "\u2B50" + "\u2B50";
+          break;
+        case 5:
+          finalVote = "\u2B50" + "\u2B50" + "\u2B50" + "\u2B50" + "\u2B50";
+          break;
+        default:
+          finalVote = "ND";
+      }
       return finalVote;
     },
   },
