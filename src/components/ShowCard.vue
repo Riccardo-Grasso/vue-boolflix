@@ -1,18 +1,20 @@
 <template>
-  <div class="product-card">
-    <div class="info">
-      <strong>Titolo: </strong>{{ data.name }}<br />
-      <strong>Titolo Originale: </strong>{{ data.originalName }} <br />
-      <strong>Lingua: </strong>
-      <img
-        :src="flags[data.original_language] || flags.default"
-        alt="flag"
-        class="flag-img"
-      /><br />
-      <strong>Voto: </strong>{{ voteRound }}<br />
-    </div>
-    <div class="poster">
-      <img :src="imgPath" alt="poster" class="poster-img" />
+  <div class="col">
+    <div class="product-card">
+      <div class="info">
+        <strong>Titolo: </strong>{{ data.name }}<br />
+        <strong>Titolo Originale: </strong>{{ data.originalName }} <br />
+        <strong>Lingua: </strong>
+        <img
+          :src="flags[data.original_language] || flags.default"
+          alt="flag"
+          class="flag-img"
+        /><br />
+        <strong>Voto: </strong>{{ voteRound }}<br />
+      </div>
+      <div class="poster">
+        <img :src="imgPath" alt="poster" class="poster-img" />
+      </div>
     </div>
   </div>
 </template>

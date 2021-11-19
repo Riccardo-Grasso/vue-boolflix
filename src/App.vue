@@ -28,7 +28,6 @@
             <MovieCard
               v-for="movie in movies"
               :key="movie.id"
-              class="col"
               :data="movie"
             ></MovieCard>
           </div>
@@ -39,7 +38,6 @@
             <ShowCard
               v-for="show in tvShows"
               :key="show.id"
-              class="col"
               :data="show"
             ></ShowCard>
           </div>
