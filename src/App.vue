@@ -23,13 +23,13 @@
     <main>
       <div class="container">
         <div class="movies py-5">
-          <h1 class="title" v-if="empty === false">FILM</h1>
+          <h1 class="title" v-if="this.movies.length !== 0">FILM</h1>
           <div v-if="!search == ''" class="row row-cols-3 g-3">
             <Card v-for="movie in movies" :key="movie.id" :data="movie"></Card>
           </div>
         </div>
         <div class="tvShows py-5">
-          <h1 class="title" v-if="empty === false">SERIE TV</h1>
+          <h1 class="title" v-if="this.tvShows.length !== 0">SERIE TV</h1>
           <div v-if="!movies == []" class="row row-cols-3 g-3">
             <Card v-for="show in tvShows" :key="show.id" :data="show"></Card>
           </div>
@@ -53,27 +53,29 @@ export default {
       movies: [],
       tvShows: [],
       search: "",
-      empty: true,
     };
   },
   methods: {
     searchMovie(media) {
-      axios
-        .get(this.apiUrl + "/search/" + media, {
-          params: {
-            api_key: this.apiKey,
-            query: this.search,
-            language: "it",
-          },
-        })
-        .then((resp) => {
-          this.empty = false;
-          if (media == "movie") {
-            this.movies = resp.data.results;
-          } else {
-            this.tvShows = resp.data.results;
-          }
-        });
+      if (this.search === "") {
+        this.movies = [];
+        this.tvShows = [];
+      } else
+        axios
+          .get(this.apiUrl + "/search/" + media, {
+            params: {
+              api_key: this.apiKey,
+              query: this.search,
+              language: "it",
+            },
+          })
+          .then((resp) => {
+            if (media == "movie") {
+              this.movies = resp.data.results;
+            } else {
+              this.tvShows = resp.data.results;
+            }
+          });
     },
     searchAll() {
       this.searchMovie("movie");

@@ -3,13 +3,12 @@
     <div class="product-card">
       <div class="info p-5">
         <div class="info-content mb-2">
-          <strong class="text-big">Titolo: </strong
-          >{{ data.title || data.name }}
+          <strong class="text-big">Titolo: </strong>{{ title }}
         </div>
 
-        <div class="info-content mb-2">
+        <div class="info-content mb-2" v-if="title !== originalTitle">
           <strong class="text-big">Titolo Originale: </strong
-          >{{ data.original_title || data.original_name }}
+          >{{ originalTitle }}
         </div>
 
         <div class="info-content mb-2">
@@ -71,6 +70,15 @@ export default {
       const myVote = this.data.vote_average;
       const finalVote = Math.round(myVote / 2);
       return finalVote;
+    },
+
+    title() {
+      return this.data.title ? this.data.title : this.data.name;
+    },
+    originalTitle() {
+      return this.data.original_title
+        ? this.data.original_title
+        : this.data.original_name;
     },
   },
 };
